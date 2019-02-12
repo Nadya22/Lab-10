@@ -1,42 +1,52 @@
 public class Main {
 
     static void Division(){
+        System.out.println("Обработка встроенных типов исключений. Деление на ноль:");
         try{
             System.out.println(10/0);
         }catch (ArithmeticException  e){
-            System.err.println("Деление на ноль невозможно!");
+            System.err.println("Деление на ноль невозможно!"+e);
            // e.printStackTrace();
         }
     }
 
     static void Array(){
+        System.out.println("\nОбработка встроенных типов исключений. Элемент вне массива:");
         int array[]={1,6,8,3};
         try{
             array[4]=5;
         }catch (ArrayIndexOutOfBoundsException e){
-            System.err.println("Элемент вне границ данного массива!");
+            System.err.println("Элемент вне границ данного массива!"+e);
            // e.printStackTrace();
         }
     }
 
-    static void ArrayDivision(){
-        try{
-            //ii=0;nt
-            for(int i=1;i<3;i=i+1) {//i=0
-                System.out.println("a=" +i);
-                int d = 40/i;
-                System.out.println(d);
+    static void Cases(int exceptionType){
+        System.out.println("\nМетод с аргументом " + exceptionType);
+        try {
+            switch (exceptionType) {
+                case 0:
+                    throw new NullPointerException();
+                case 1:
+                    throw new ArithmeticException();
+                case 2:
+                    throw new ArrayIndexOutOfBoundsException();
             }
-            int c[]={1,3};
-            c[4]=155;
-        }catch(ArithmeticException е){
-            System.err.println("Деление на ноль.");
-        }catch (ArrayIndexOutOfBoundsException e){
-            System.err.println("Элемент вне границ массива.");
         }
+        catch (NullPointerException e){
+            System.err.println("Исключение: " + e);
+        }
+        catch (ArithmeticException e){
+            System.err.println("Исключение: " + e);
+        }
+        catch (ArrayIndexOutOfBoundsException e){
+            System.err.println("Исключение: " + e);
+        }
+
     }
 
     static void MMyException(){
+        System.out.println("\nГенерирование исклчения собственного подкласса:");
         try{
             throw new MyException();
         }catch (MyException e){
@@ -47,7 +57,9 @@ public class Main {
     public static void main(String[] args) {
         Division();
         Array();
-        ArrayDivision();
         MMyException();
+        Cases(0);
+        Cases(1);
+        Cases(2);
     }
 }
