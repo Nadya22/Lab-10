@@ -57,9 +57,10 @@ public class Main {
     public static void main(String[] args) {
         Division();
         Array();
-        MMyException();
         Cases(0);
         Cases(1);
         Cases(2);
+        MMyException();
+
     }
 }
