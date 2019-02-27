@@ -60,7 +60,12 @@ public class Main {
         cases(0);
         cases(1);
         cases(2);
-        MMyException();
-
+        ExceptoinDemo met3 = new ExceptoinDemo();
+        try {
+            met3.start3(1);
+            met3.start3(20);
+        } catch (MyException e) {
+            System.err.println("Исключение: " + e);
+        }
     }
 }
